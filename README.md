@@ -1,4 +1,4 @@
-<h1 align="center">Le Fou qui dîne de segfaults au clair de lune</h1>
+<h1 align="center">Le Fou qui a survécu à son propre code</h1>
 <h3 align="center">Développeur logiciel freelance · Étudiant en Master MIAGE · Toulouse / Genève</h3>
 
 <p align="center">
