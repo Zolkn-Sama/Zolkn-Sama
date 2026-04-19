@@ -1,4 +1,4 @@
-<h1 align="center">👋 WELCOME </h1>
+<h1 align="center">👋 Welcome </h1>
 <h3 align="center">Développeur logiciel freelance · Étudiant en Master MIAGE · Toulouse / Genève</h3>
 
 <p align="center">
@@ -87,12 +87,15 @@ Je suis curieux, rigoureux, et je prends plaisir à livrer du code propre, test�
       </a>
     </td>
     <td width="50%" valign="top">
-      <h3>🌐 m1-s2-web-projet</h3>
+      <h3>🏃 Sport Flow <sub><em>(m1-s2-web-projet)</em></sub></h3>
       <p>
-        <img src="https://img.shields.io/badge/Web-F7DF1E?style=flat&logo=javascript&logoColor=black"/>
-        <img src="https://img.shields.io/badge/Full%20Stack-61DAFB?style=flat&logo=react&logoColor=black"/>
+        <img src="https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=spring&logoColor=white"/>
+        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white"/>
       </p>
-      <p>Projet web réalisé en <strong>Master 1 MIAGE (semestre 2)</strong> à UT1 Capitole. Mise en pratique du développement full stack dans un cadre académique exigeant : conception, développement, travail en équipe.</p>
+      <p>Application web full stack développée en équipe de 4 en <strong>Master 1 MIAGE</strong>, déployée sur <a href="https://sportflow.linv.dev">sportflow.linv.dev</a>.</p>
+      <p>Stack <strong>Spring Boot + PostgreSQL</strong> conteneurisée avec <strong>Docker Compose</strong>, CI/CD complète sous <strong>GitHub Actions</strong> (SonarQube, couverture JaCoCo, publication d'image sur GHCR, Javadoc et Swagger UI déployés sur GitHub Pages).</p>
       <a href="https://github.com/Zolkn-Sama/m1-s2-web-projet">
         <img src="https://img.shields.io/badge/→%20Voir%20le%20repo-181717?style=for-the-badge&logo=github&logoColor=white"/>
       </a>
