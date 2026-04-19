@@ -1,4 +1,4 @@
-<h1 align="center">👋 Welcome </h1>
+<h1 align="center">Enzo Landrecy — Développeur logiciel freelance</h1>
 <h3 align="center">Développeur logiciel freelance · Étudiant en Master MIAGE · Toulouse / Genève</h3>
 
 <p align="center">
