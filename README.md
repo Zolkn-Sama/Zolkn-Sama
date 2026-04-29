@@ -116,19 +116,6 @@ Je suis curieux, rigoureux, et je prends plaisir à livrer du code propre, test�
 
 ---
 
-## 📊 Stats GitHub
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=Zolkn-Sama&show_icons=true&theme=github_dark&hide_border=true&count_private=true" height="165"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Zolkn-Sama&layout=compact&theme=github_dark&hide_border=true&langs_count=8" height="165"/>
-</p>
-
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=Zolkn-Sama&theme=github-dark&hide_border=true" height="165"/>
-</p>
-
----
-
 ## 📫 Me contacter
 
 - 📧 **Email** — [enzo.landrecy@gmail.com](mailto:enzo.landrecy@gmail.com)
