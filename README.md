@@ -1,107 +1,137 @@
 <h1 align="center">Enzo LANDRECY</h1>
-<h3 align="center">Développeur logiciel freelance · Étudiant en Master MIAGE · Toulouse / Genève</h3>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/enzo-landrecy"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
-  <a href="mailto:enzo.landrecy@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
-  <img src="https://img.shields.io/badge/Toulouse-%F0%9F%87%AB%F0%9F%87%B7-1F6FEB?style=for-the-badge" alt="Toulouse"/>
-  <img src="https://img.shields.io/badge/Genève%20(10%20min)-%F0%9F%87%A8%F0%9F%87%AD-D52B1E?style=for-the-badge" alt="Genève"/>
-  <img src="https://img.shields.io/badge/Status-Ouvert%20aux%20missions-2EA043?style=for-the-badge" alt="Disponible"/>
+  <b>Développeur backend · Étudiant en Master MIAGE — UT1 Capitole, Toulouse</b>
+</p>
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/enzo-landrecy"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+  <a href="mailto:enzo.landrecy@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
+  <img src="https://img.shields.io/badge/Toulouse-%F0%9F%87%AB%F0%9F%87%B7-1F6FEB?style=for-the-badge" alt="Toulouse">
 </p>
 
 ---
 
 ## 🧑‍💻 À propos
 
-Étudiant en **Master 1 MIAGE à UT1 Capitole** et **développeur freelance**, je bosse sur des missions ponctuelles autour du **C++ junior** — typiquement : correction de bugs, ajout de mini-features, configuration **CMake**, et outils métier. En parallèle, je reste polyvalent sur l'écosystème **.NET / SQL / API REST** et le web (React, Vue, Node).
+Étudiant en **Master 1 MIAGE à UT1 Capitole**, orienté **backend et architecture logicielle**. Je travaille surtout sur des APIs, des bases de données et l'industrialisation qui va avec : tests, CI, qualité de code.
 
-Je suis curieux, rigoureux, et je prends plaisir à livrer du code propre, testé et maintenable — même pour de petites missions.
+En ce moment, je construis **[Lodestone](#-lodestone--assistant-de-connaissances-souverain-pour-entreprises)**, un assistant de connaissances RAG auto-hébergeable écrit en **Rust**. C'est mon projet de fond : conception produit, architecture backend, et une exigence forte sur la qualité (clippy zéro warning, tests d'intégration sur base éphémère).
 
-> 📍 **Basé à Toulouse, mais aussi dispo à 10 min de Genève** — idéal pour des missions côté bassin lémanique (Suisse / Ain / Haute-Savoie), en remote ou sur site.
->
-> 💼 **Ouvert aux missions freelance courtes ou moyennes** (C++, .NET, web). N'hésite pas à me contacter.
+À côté, je suis à l'aise sur l'écosystème **.NET / Java / SQL** et sur le web (Next.js, React, Vue, Node).
 
 ---
 
-## 🛠️ Stack & Outils
+## 🧭 Lodestone — assistant de connaissances souverain pour entreprises
+
+> *Les employés interrogent en langage naturel la base documentaire de leur organisation ; l'IA répond en citant systématiquement ses sources.*
+
+![Rust](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust&logoColor=white)
+![Axum](https://img.shields.io/badge/Axum-000000?style=flat&logo=rust&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL%20%2B%20pgvector-4169E1?style=flat&logo=postgresql&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=flat&logo=ollama&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+
+Les PME croulent sous la documentation interne (procédures, comptes-rendus, doc technique, contrats) et perdent un temps considérable à « savoir où c'est écrit ». Lodestone transforme ces documents épars en une mémoire d'entreprise interrogeable.
+
+**Le parti pris : la souveraineté des données.** Là où les acteurs du marché envoient tout chez un fournisseur tiers, Lodestone peut faire tourner le LLM **en local (Ollama) ou sur l'infrastructure du client**. Les documents internes ne quittent jamais l'entreprise — un argument décisif pour les secteurs santé, juridique, finance et public.
+
+**Ce que je construis :**
+
+| Couche | Choix technique | Pourquoi |
+|---|---|---|
+| Backend | **Rust + Axum + Tokio** | Async natif, idéal pour le streaming WebSocket token par token |
+| Persistance | **PostgreSQL + pgvector** (SeaORM) | Une seule base pour le relationnel *et* les vecteurs — zéro infra supplémentaire |
+| IA | **Ollama** via une API OpenAI-compatible | Un unique client Rust derrière un trait `LlmClient` : basculer local ↔ cloud est une variable d'environnement |
+| Frontend | **Next.js + Shadcn/ui + Tailwind** | SSR pour le marketing, WebSocket pour le chat temps réel |
+
+**Points d'architecture que j'ai particulièrement travaillés :**
+
+- 🔐 **Multi-tenant en schéma partagé** — isolation garantie par un filtrage systématique sur `org_id`, jusque dans la recherche vectorielle.
+- 🧱 **Workspace Cargo multi-crates** — toute la logique pure (crypto, chunking, client LLM) sort en *library crates* testables hors-ligne ; le binaire ne garde que la glu web.
+- 🛡️ **RBAC dans les extracteurs Axum** — `AuthUser` + `OrgMember { role }`, l'autorisation vit à la frontière HTTP, pas éparpillée dans les handlers.
+- 🧪 **Qualité non négociable** — `clippy -D warnings`, jamais de `.unwrap()` en handler, tests d'intégration sur un Postgres+pgvector jetable (`testcontainers`) avec le LLM mocké derrière son trait.
+- 📚 **RAG avec traçabilité** — chaque réponse persiste les fragments qui l'ont produite, avec leur score de similarité.
+
+🚧 *Projet en cours de développement — dépôt bientôt public.*
+
+---
+
+## 🌟 Autres projets
+
+### 🏭 [m1-s2-indu](https://github.com/Zolkn-Sama/m1-s2-indu) — industrialisation du développement logiciel
+
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=flat&logo=apachemaven&logoColor=white)
+![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat&logo=sonarqube&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat&logo=githubactions&logoColor=white)
+
+Projet **Java / Maven** mené à **6 en Master 1 MIAGE**, centré non pas sur la feature mais sur la **chaîne de production logicielle** : quality gate **SonarQube**, mesure de couverture, **Javadoc publiée**, et un workflow Git strict (branche dédiée → pull request → revue → aucun merge sans consentement).
+
+C'est le projet qui m'a formé aux réflexes que j'applique aujourd'hui partout : la CI décide, pas les habitudes.
+
+📊 [Javadoc](https://linventif.github.io/m1-s2-indu) · [Tableau de bord SonarQube](https://sorar.linv.dev)
+
+---
+
+### 🩺 [R6.06-GestionRDV](https://github.com/Zolkn-Sama/R6.06-GestionRDV-main) — gestion de rendez-vous médicaux
+
+![.NET](https://img.shields.io/badge/.NET%206-512BD4?style=flat&logo=dotnet&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=flat&logo=csharp&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+
+Application de **gestion de rendez-vous pour un cabinet médical**, construite en trois blocs séparés : une **API .NET 6** (`Sae.MediPlan.Api`), sa **suite de tests** (`Sae.MediPlan.ApiTests`) et une **SPA** cliente (`Sae.MediPlan.Spa`).
+
+Au menu : **PostgreSQL conteneurisé** via Docker Compose, migrations **EF Core**, authentification **JWT** avec secrets sortis du code (`dotnet user-secrets`), et un **MCD** modélisé en PlantUML. Le dépôt embarque aussi une base `legacy/`, ce qui en fait autant un exercice de reprise d'existant que de développement neuf.
+
+---
+
+### 🏃 [Sport Flow](https://github.com/Zolkn-Sama/m1-s2-web-projet) — application web full stack
+
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=spring&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
+
+Développée en équipe de 4 en Master 1 MIAGE et déployée sur [sportflow.linv.dev](https://sportflow.linv.dev). Stack **Spring Boot + PostgreSQL** conteneurisée, CI/CD complète sous GitHub Actions (SonarQube, couverture JaCoCo, image publiée sur GHCR, Javadoc et Swagger UI sur GitHub Pages).
+
+---
+
+## 🛠️ Stack & outils
 
 **Langages**
-<p>
-  <img src="https://img.shields.io/badge/C%2B%2B-00599C?style=flat&logo=c%2B%2B&logoColor=white"/>
-  <img src="https://img.shields.io/badge/C%23-239120?style=flat&logo=c-sharp&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white"/>
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black"/>
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white"/>
-  <img src="https://img.shields.io/badge/SQL-4479A1?style=flat&logo=postgresql&logoColor=white"/>
-</p>
 
-**Frameworks & Libs**
-<p>
-  <img src="https://img.shields.io/badge/.NET-512BD4?style=flat&logo=dotnet&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Blazor-512BD4?style=flat&logo=blazor&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=spring&logoColor=white"/>
-  <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black"/>
-  <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat&logo=vue.js&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white"/>
-</p>
+![Rust](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=flat&logo=csharp&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
+![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat&logo=postgresql&logoColor=white)
+
+**Frameworks & libs**
+
+![Axum](https://img.shields.io/badge/Axum-000000?style=flat&logo=rust&logoColor=white)
+![Tokio](https://img.shields.io/badge/Tokio-000000?style=flat&logo=rust&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET-512BD4?style=flat&logo=dotnet&logoColor=white)
+![Blazor](https://img.shields.io/badge/Blazor-512BD4?style=flat&logo=blazor&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=spring&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat&logo=vue.js&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
 
 **Outils & DevOps**
-<p>
-  <img src="https://img.shields.io/badge/CMake-064F8C?style=flat&logo=cmake&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white"/>
-  <img src="https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white"/>
-  <img src="https://img.shields.io/badge/GitLab-FC6D26?style=flat&logo=gitlab&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Azure-0078D4?style=flat&logo=microsoftazure&logoColor=white"/>
-  <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white"/>
-  <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white"/>
-</p>
 
----
-
-## 💼 Ce sur quoi j'interviens en freelance
-
-- 🐛 **Bugfixes C++** — diagnostic, reproduction, correction, tests de non-régression
-- ⚙️ **Configuration CMake** — mise en place, modernisation, multi-plateforme
-- ✨ **Mini-features** — petites évolutions isolées, bien cadrées, bien testées
-- 🏢 **Outils métier** — petits utilitaires internes, scripts, automatisations
-- 🔌 **Intégrations .NET / API REST / SQL** — côté back ou full stack
-
----
-
-## 🌟 Projets en vedette
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3>⛩️ WealthTorii</h3>
-      <p>
-        <img src="https://img.shields.io/badge/C%2B%2B20-00599C?style=flat&logo=c%2B%2B&logoColor=white"/>
-        <img src="https://img.shields.io/badge/CMake-064F8C?style=flat&logo=cmake&logoColor=white"/>
-      </p>
-      <p>Projet personnel en <strong>C++20</strong> construit avec <strong>CMake</strong>, pensé comme un terrain d'exploration : architecture logicielle propre, ajout progressif de features, bonnes pratiques modernes du C++.</p>
-      <p>Une vitrine concrète de mon travail en C++ freelance.</p>
-      <a href="https://github.com/Zolkn-Sama/WealthTorii">
-        <img src="https://img.shields.io/badge/→%20Voir%20le%20repo-181717?style=for-the-badge&logo=github&logoColor=white"/>
-      </a>
-    </td>
-    <td width="50%" valign="top">
-      <h3>🏃 Sport Flow <sub><em>(m1-s2-web-projet)</em></sub></h3>
-      <p>
-        <img src="https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white"/>
-        <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=spring&logoColor=white"/>
-        <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white"/>
-        <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white"/>
-      </p>
-      <p>Application web full stack développée en équipe de 4 en <strong>Master 1 MIAGE</strong>, déployée sur <a href="https://sportflow.linv.dev">sportflow.linv.dev</a>.</p>
-      <p>Stack <strong>Spring Boot + PostgreSQL</strong> conteneurisée avec <strong>Docker Compose</strong>, CI/CD complète sous <strong>GitHub Actions</strong> (SonarQube, couverture JaCoCo, publication d'image sur GHCR, Javadoc et Swagger UI déployés sur GitHub Pages).</p>
-      <a href="https://github.com/Zolkn-Sama/m1-s2-web-projet">
-        <img src="https://img.shields.io/badge/→%20Voir%20le%20repo-181717?style=for-the-badge&logo=github&logoColor=white"/>
-      </a>
-    </td>
-  </tr>
-</table>
+![Git](https://img.shields.io/badge/Git-F05032?style=flat&logo=git&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat&logo=githubactions&logoColor=white)
+![GitLab](https://img.shields.io/badge/GitLab-FC6D26?style=flat&logo=gitlab&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=flat&logo=sonarqube&logoColor=white)
+![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat&logo=microsoftazure&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white)
 
 ---
 
@@ -110,19 +140,16 @@ Je suis curieux, rigoureux, et je prends plaisir à livrer du code propre, test�
 | Période | Formation / Expérience |
 |---|---|
 | **2025 – 2027** | Master MIAGE — *UT1 Capitole, Toulouse* |
-| **2024** | Stage **Groupe-Entis** — Appli compta full stack (C# / .NET / Blazor / API REST) |
-| **2023** | Stage **ELDORA (Suisse)** — Webshop interne (React / SPFx / Azure / MS Graph) |
+| **2024** | Stage **Groupe-Entis** — appli compta full stack (C# / .NET / Blazor / API REST) |
+| **2023** | Stage **ELDORA (Suisse)** — webshop interne (React / SPFx / Azure / MS Graph) |
 | **2021 – 2024** | BUT Informatique — *IUT Annecy* |
 
 ---
 
 ## 📫 Me contacter
 
-- 📧 **Email** — [enzo.landrecy@gmail.com](mailto:enzo.landrecy@gmail.com)
+- 📧 **Email** — <enzo.landrecy@gmail.com>
 - 💼 **LinkedIn** — [linkedin.com/in/enzo-landrecy](https://www.linkedin.com/in/enzo-landrecy)
-- 📍 **Toulouse, France** — et à 10 min de **Genève** en Haute-Savoie pour les missions côté Suisse / bassin lémanique
-- 🌐 Remote ou sur site selon la mission
+- 📍 **Toulouse, France**
 
-<p align="center">
-  <em>Merci d'être passé 👋 — n'hésite pas à jeter un œil à mes repos ou à me ping pour une mission.</em>
-</p>
+<p align="center"><i>Merci d'être passé 👋</i></p>
