@@ -8,6 +8,7 @@
   <a href="https://www.linkedin.com/in/enzo-landrecy"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
   <a href="mailto:enzo.landrecy@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"></a>
   <img src="https://img.shields.io/badge/Toulouse-%F0%9F%87%AB%F0%9F%87%B7-1F6FEB?style=for-the-badge" alt="Toulouse">
+  <img src="https://img.shields.io/badge/Gen%C3%A8ve%20%E2%80%93%20Lausanne-%F0%9F%87%A8%F0%9F%87%AD-D52B1E?style=for-the-badge" alt="Genève – Lausanne">
 </p>
 
 ---
@@ -19,6 +20,8 @@
 En ce moment, je construis **[Lodestone](#-lodestone--assistant-de-connaissances-souverain-pour-entreprises)**, un assistant de connaissances RAG auto-hébergeable écrit en **Rust**. C'est mon projet de fond : conception produit, architecture backend, et une exigence forte sur la qualité (clippy zéro warning, tests d'intégration sur base éphémère).
 
 À côté, je suis à l'aise sur l'écosystème **.NET / Java / SQL** et sur le web (Next.js, React, Vue, Node).
+
+> 📍 **Basé à Toulouse**, et disponible sur **Genève et l'ensemble du bassin lémanique jusqu'à Lausanne** — en remote comme sur site.
 
 ---
 
@@ -60,6 +63,20 @@ Les PME croulent sous la documentation interne (procédures, comptes-rendus, doc
 
 ## 🌟 Autres projets
 
+### 🏃 [Sport Flow](https://github.com/Zolkn-Sama/m1-s2-web-projet) — application web full stack
+
+![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=spring&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=flat&logo=githubactions&logoColor=white)
+
+Application web développée **en équipe de 4 en Master 1 MIAGE** et **déployée en production** sur [sportflow.linv.dev](https://sportflow.linv.dev).
+
+Stack **Spring Boot + PostgreSQL** conteneurisée avec Docker Compose, et une **CI/CD complète sous GitHub Actions** : analyse SonarQube, couverture JaCoCo, publication de l'image sur GHCR, Javadoc et Swagger UI déployés automatiquement sur GitHub Pages. Le projet où la chaîne de livraison est allée le plus loin — du commit jusqu'au déploiement.
+
+---
+
 ### 🏭 [m1-s2-indu](https://github.com/Zolkn-Sama/m1-s2-indu) — industrialisation du développement logiciel
 
 ![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
@@ -88,13 +105,19 @@ Au menu : **PostgreSQL conteneurisé** via Docker Compose, migrations **EF Core*
 
 ---
 
-### 🏃 [Sport Flow](https://github.com/Zolkn-Sama/m1-s2-web-projet) — application web full stack
+### ⚡ SAÉ 4.01 — configurateur de véhicules Tesla *(API .NET + client Vue)*
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=flat&logo=openjdk&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=spring&logoColor=white)
+![.NET](https://img.shields.io/badge/ASP.NET%20Core%206-512BD4?style=flat&logo=dotnet&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-239120?style=flat&logo=csharp&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white)
+![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat&logo=vue.js&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=flat&logo=swagger&logoColor=black)
+![Azure](https://img.shields.io/badge/Azure-0078D4?style=flat&logo=microsoftazure&logoColor=white)
 
-Développée en équipe de 4 en Master 1 MIAGE et déployée sur [sportflow.linv.dev](https://sportflow.linv.dev). Stack **Spring Boot + PostgreSQL** conteneurisée, CI/CD complète sous GitHub Actions (SonarQube, couverture JaCoCo, image publiée sur GHCR, Javadoc et Swagger UI sur GitHub Pages).
+Projet **full stack en deux dépôts** (BUT Informatique, IUT d'Annecy) : un configurateur de véhicules type Tesla couvrant le catalogue — modèles, motorisations, variantes, options, accessoires — jusqu'au tunnel de commande, comptes clients et moyens de paiement inclus.
+
+- 🔌 **[API-Tesla](https://github.com/Zolkn-Sama/API-Tesla-main)** — API REST **ASP.NET Core 6** sur **EF Core + PostgreSQL**, en **architecture en couches avec inversion de dépendance** : les 22 contrôleurs ne connaissent jamais le `DbContext`, seulement des interfaces `IDataRepository<T>` injectées au démarrage. Authentification **JWT** (HMAC-SHA256, validation stricte émetteur/audience/signature, `ClockSkew` à zéro) avec politiques *Admin* / *User*. Documentation **Swagger/OpenAPI** générée depuis les annotations `[ProducesResponseType]`. Chaque contrôleur est testé **en double : sur base réelle et sur repository mocké (Moq)** — c'est précisément ce que l'abstraction repository achète. Déploiement continu sur **Azure App Service** via GitHub Actions.
+- 🖥️ **[Client_Tesla](https://github.com/Zolkn-Sama/SAE4.01-Client_Tesla)** — **SPA Vue.js** consommant l'API, développée à plusieurs sur une centaine de commits.
 
 ---
 
@@ -141,7 +164,7 @@ Développée en équipe de 4 en Master 1 MIAGE et déployée sur [sportflow.linv
 |---|---|
 | **2025 – 2027** | Master MIAGE — *UT1 Capitole, Toulouse* |
 | **2024** | Stage **Groupe-Entis** — appli compta full stack (C# / .NET / Blazor / API REST) |
-| **2023** | Stage **ELDORA (Suisse)** — webshop interne (React / SPFx / Azure / MS Graph) |
+| **2023** | Stage **ELDORA (Suisse)** — développement d'une **marketplace interne** (React / SPFx / Azure / MS Graph) |
 | **2021 – 2024** | BUT Informatique — *IUT Annecy* |
 
 ---
@@ -150,6 +173,7 @@ Développée en équipe de 4 en Master 1 MIAGE et déployée sur [sportflow.linv
 
 - 📧 **Email** — <enzo.landrecy@gmail.com>
 - 💼 **LinkedIn** — [linkedin.com/in/enzo-landrecy](https://www.linkedin.com/in/enzo-landrecy)
-- 📍 **Toulouse, France**
+- 📍 **Toulouse, France** — et disponible sur **Genève / bassin lémanique jusqu'à Lausanne**
+- 🌐 Remote ou sur site
 
 <p align="center"><i>Merci d'être passé 👋</i></p>
